@@ -6,6 +6,7 @@ const mysql = require("mysql");
 const quarantineCenter = require("./controllers/quarantineCenter");
 const currentUser = require("./controllers/currentUser");
 const managePatients = require("./controllers/managePatients");
+const manageStaffs = require("./controllers/manageStaffs");
 
 const app = express();
 
@@ -94,14 +95,36 @@ app.get("/patient", (req, res) => {
 
 app.post("/newPatient", (req, res) => {
   managePatients.handleNewPatient(req, res, db);
+  update();
 });
 
 app.post("/editPatient", (req, res) => {
   managePatients.handleEditPatient(req, res, db);
+  update();
 });
 
 app.post("/deletePatient", (req, res) => {
   managePatients.handleDeletePatient(req, res, db);
+  update();
+});
+
+app.get("/staff", (req, res) => {
+  manageStaffs.handleStaff(req, res, db);
+});
+
+app.post("/newStaff", (req, res) => {
+  manageStaffs.handleNewStaff(req, res, db);
+  update();
+});
+
+app.post("/editStaff", (req, res) => {
+  manageStaffs.handleEditStaff(req, res, db);
+  update();
+});
+
+app.post("/deleteStaff", (req, res) => {
+  manageStaffs.handleDeleteStaff(req, res, db);
+  update();
 });
 
 app.get("/test", (req, res) => {
