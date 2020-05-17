@@ -20,7 +20,7 @@ const db = knex({
   connection: {
     host: "127.0.0.1",
     user: "root",
-    password: "#No12sql#",
+    password: "mypassword",
     database: "databaseProject",
   },
 });
@@ -28,7 +28,7 @@ const db = knex({
 const con = mysql.createPool({
   host: "127.0.0.1",
   user: "root",
-  password: "#No12sql#",
+  password: "mypassword",
   database: "databaseProject",
 });
 
