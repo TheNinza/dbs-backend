@@ -149,10 +149,24 @@ const handleCenterStaff = (req, res, db) => {
     });
 };
 
+const handleCenterPatient = (req, res, db) => {
+  const { center_id } = req.body;
+  db("patient")
+    .where("center_id", Number(center_id))
+    .then((data) => {
+      if (data.length) res.json(data);
+      else res.status(400).json("NoPatients");
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
+};
+
 module.exports = {
   handleNewCenter,
   handleCenter,
   handleEditCenter,
   handleDeleteCenter,
   handleCenterStaff,
+  handleCenterPatient,
 };

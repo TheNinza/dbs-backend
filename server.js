@@ -83,6 +83,10 @@ app.post("/centerStaff", (req, res) => {
   quarantineCenter.handleCenterStaff(req, res, db);
 });
 
+app.post("/centerPatient", (req, res) => {
+  quarantineCenter.handleCenterPatient(req, res, db);
+});
+
 app.get("/test", (req, res) => {
   db("users").then((data) => {
     res.json(data);
