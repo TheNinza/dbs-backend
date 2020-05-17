@@ -8,6 +8,7 @@ const currentUser = require("./controllers/currentUser");
 const managePatients = require("./controllers/managePatients");
 const manageStaffs = require("./controllers/manageStaffs");
 const manageRequests = require("./controllers/manageRequest");
+const manageUsers = require("./controllers/manageUsers");
 
 const app = express();
 
@@ -148,6 +149,22 @@ app.post("/requestActions", (req, res) => {
 
 app.post("/deleteRequest", (req, res) => {
   manageRequests.handleDeleteRequest(req, res, db);
+});
+
+app.get("/user", (req, res) => {
+  manageUsers.handleUser(req, res, db);
+});
+
+app.post("/newUser", (req, res) => {
+  manageUsers.handleNewUser(req, res, db);
+});
+
+app.post("/editUser", (req, res) => {
+  manageUsers.handleEditUser(req, res, db);
+});
+
+app.post("/deleteUser", (req, res) => {
+  manageUsers.handleDeleteUser(req, res, db);
 });
 
 app.listen(3000, () => {
