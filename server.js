@@ -7,6 +7,7 @@ const quarantineCenter = require("./controllers/quarantineCenter");
 const currentUser = require("./controllers/currentUser");
 const managePatients = require("./controllers/managePatients");
 const manageStaffs = require("./controllers/manageStaffs");
+const manageRequests = require("./controllers/manageRequest");
 
 const app = express();
 
@@ -131,6 +132,22 @@ app.get("/test", (req, res) => {
   db("users").then((data) => {
     res.json(data);
   });
+});
+
+app.get("/request", (req, res) => {
+  manageRequests.handleRequest(req, res, db);
+});
+
+app.post("/newRequest", (req, res) => {
+  manageRequests.handleNewRequest(req, res, db);
+});
+
+app.post("/requestActions", (req, res) => {
+  manageRequests.handleRequestActions(req, res, db);
+});
+
+app.post("/deleteRequest", (req, res) => {
+  manageRequests.handleDeleteRequest(req, res, db);
 });
 
 app.listen(3000, () => {
