@@ -136,9 +136,23 @@ const handleDeleteCenter = (req, res, db) => {
     });
 };
 
+const handleCenterStaff = (req, res, db) => {
+  const { center_id } = req.body;
+  db("staff")
+    .where("center_id", Number(center_id))
+    .then((data) => {
+      if (data.length) res.json(data);
+      else res.status(400).json("No Staffs");
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
+};
+
 module.exports = {
   handleNewCenter,
   handleCenter,
   handleEditCenter,
   handleDeleteCenter,
+  handleCenterStaff,
 };
