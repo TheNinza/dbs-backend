@@ -35,11 +35,23 @@ const handleNewCenter = (req, res, db) => {
 const handleCenter = (req, res, db) => {
   db("center")
     .join("center_type", "center.center_type_id", "center_type.center_type_id")
+    .leftJoin("user", "center.user_id", "user.user_id")
     .select()
     .then((data) => {
       res.json(data);
     })
     .catch((err) => res.status(400).json("can't get centers"));
+};
+
+const handleCenterType = (req, res, db) => {
+  db("center_type")
+    .select()
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((err) => {
+      res.status(400).json("cant'get center types");
+    });
 };
 
 const handleEditCenter = (req, res, db) => {
@@ -169,4 +181,5 @@ module.exports = {
   handleDeleteCenter,
   handleCenterStaff,
   handleCenterPatient,
+  handleCenterType,
 };

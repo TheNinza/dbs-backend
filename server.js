@@ -9,6 +9,7 @@ const managePatients = require("./controllers/managePatients");
 const manageStaffs = require("./controllers/manageStaffs");
 const manageRequests = require("./controllers/manageRequest");
 const manageUsers = require("./controllers/manageUsers");
+const password = require("../password");
 
 const app = express();
 
@@ -20,7 +21,7 @@ const db = knex({
   connection: {
     host: "127.0.0.1",
     user: "root",
-    password: "mypassword",
+    password: password.password(),
     database: "databaseProject",
   },
 });
@@ -28,7 +29,7 @@ const db = knex({
 const con = mysql.createPool({
   host: "127.0.0.1",
   user: "root",
-  password: "mypassword",
+  password: password.password(),
   database: "databaseProject",
 });
 
@@ -68,6 +69,10 @@ app.put("/editProfile", (req, res) => {
 
 app.put("/editCenter", (req, res) => {
   quarantineCenter.handleEditCenter(req, res, db);
+});
+
+app.get("/centerType", (req, res) => {
+  quarantineCenter.handleCenterType(req, res, db);
 });
 
 app.get("/center", (req, res) => {
@@ -130,7 +135,7 @@ app.post("/deleteStaff", (req, res) => {
 });
 
 app.get("/test", (req, res) => {
-  db("users").then((data) => {
+  db("user").then((data) => {
     res.json(data);
   });
 });

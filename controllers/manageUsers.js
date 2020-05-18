@@ -3,7 +3,7 @@ const handleUser = (req, res, db) => {
     .join("user_role", "user_role.user_role_id", "user.user_role_id")
     .then((data) => res.json(data))
     .catch((err) => {
-      res.status(400).json("Can't get users");
+      res.status(400).json("Can't get user");
       console.log(err);
     });
 };
