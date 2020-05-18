@@ -2,6 +2,7 @@ const handleRequest = (req, res, db) => {
   db("service_request")
     .join("req_status", "service_request.status_id", "req_status.status_id")
     .join("center", "service_request.center_id", "center.center_id")
+    .leftJoin("user", "service_request.user_id", "user.user_id")
     .then((data) => {
       res.json(data);
     })

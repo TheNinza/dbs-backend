@@ -9,12 +9,22 @@ const handleStaff = (req, res, db) => {
     });
 };
 
+const handlerole = (req, res, db) => {
+  db("staff_role")
+    .select()
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((err) => {
+      res.status(400).json("cant'get center types");
+    });
+};
+
 const handleNewStaff = (req, res, db) => {
   const {
     staff_name,
     staff_contact_number,
     role_id,
-
     working_hours,
     center_id,
   } = req.body;
@@ -142,4 +152,5 @@ module.exports = {
   handleNewStaff,
   handleEditStaff,
   handleDeleteStaff,
+  handlerole,
 };

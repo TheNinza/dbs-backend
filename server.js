@@ -115,6 +115,9 @@ app.post("/deletePatient", (req, res) => {
   update();
 });
 
+app.get("/staffrole", (req, res) => {
+  manageStaffs.handlerole(req, res, db);
+});
 app.get("/staff", (req, res) => {
   manageStaffs.handleStaff(req, res, db);
 });
@@ -170,6 +173,28 @@ app.post("/editUser", (req, res) => {
 
 app.post("/deleteUser", (req, res) => {
   manageUsers.handleDeleteUser(req, res, db);
+});
+
+app.get("/userrole", (req, res) => {
+  db("user_role")
+    .select()
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((err) => {
+      res.status(400).json("cant'get center types");
+    });
+});
+
+app.post("/getcenteruser", (req, res) => {
+  const { user_id } = req.body;
+  db("center")
+    .where("user_id", Number(user_id))
+    .select()
+    .then((data) => res.json(data[0]))
+    .catch((err) => {
+      res.status(400).json("cant'get center types");
+    });
 });
 
 app.listen(3000, () => {
