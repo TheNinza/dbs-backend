@@ -9,7 +9,6 @@ const managePatients = require("./controllers/managePatients");
 const manageStaffs = require("./controllers/manageStaffs");
 const manageRequests = require("./controllers/manageRequest");
 const manageUsers = require("./controllers/manageUsers");
-const password = require("../password");
 
 const app = express();
 
@@ -21,7 +20,7 @@ const db = knex({
   connection: {
     host: "127.0.0.1",
     user: "root",
-    password: password.password(),
+    password: "password.password()",
     database: "databaseProject",
   },
 });
@@ -29,7 +28,7 @@ const db = knex({
 const con = mysql.createPool({
   host: "127.0.0.1",
   user: "root",
-  password: password.password(),
+  password: "password.password()",
   database: "databaseProject",
 });
 
