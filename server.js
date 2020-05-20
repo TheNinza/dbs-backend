@@ -18,18 +18,18 @@ app.use(cors());
 const db = knex({
   client: "mysql",
   connection: {
-    host: "127.0.0.1",
-    user: "root",
-    password: "password.password()",
-    database: "databaseProject",
+    host: "sql12.freemysqlhosting.net",
+    user: "sql12342057",
+    password: "97t9AEDvfg",
+    database: "sql12342057",
   },
 });
 
 const con = mysql.createPool({
-  host: "127.0.0.1",
-  user: "root",
-  password: "password.password()",
-  database: "databaseProject",
+  host: "sql12.freemysqlhosting.net",
+  user: "sql12342057",
+  password: "97t9AEDvfg",
+  database: "sql12342057",
 });
 
 const update = () => {
