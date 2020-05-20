@@ -20,7 +20,7 @@ const db = knex({
   connection: {
     host: "sql12.freemysqlhosting.net",
     user: "sql12342057",
-    password: "97t9AEDvfg",
+    password: process.env.sqlPassword,
     database: "sql12342057",
   },
 });
@@ -28,7 +28,7 @@ const db = knex({
 const con = mysql.createPool({
   host: "sql12.freemysqlhosting.net",
   user: "sql12342057",
-  password: "97t9AEDvfg",
+  password: process.env.sqlPassword,
   database: "sql12342057",
 });
 
