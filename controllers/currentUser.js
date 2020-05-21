@@ -1,6 +1,6 @@
 const handleLogin = (req, res, db) => {
   const { user_role_name, password } = req.body;
-  if (password === "1234") {
+  if (password === `${process.env.loginPassword}`) {
     db("user")
       .join("user_role", "user.user_role_id", "user_role.user_role_id")
       .select()
