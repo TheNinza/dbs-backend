@@ -19,17 +19,17 @@ const db = knex({
   client: "mysql",
   connection: {
     host: "sql12.freemysqlhosting.net",
-    user: "sql12342057",
+    user: "sql12344054",
     password: process.env.sqlPassword,
-    database: "sql12342057",
+    database: "sql12344054",
   },
 });
 
 const con = mysql.createPool({
   host: "sql12.freemysqlhosting.net",
-  user: "sql12342057",
+  user: "sql12344054",
   password: process.env.sqlPassword,
-  database: "sql12342057",
+  database: "sql12344054",
 });
 
 const update = () => {
