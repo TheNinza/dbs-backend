@@ -18,18 +18,18 @@ app.use(cors());
 const db = knex({
   client: "mysql",
   connection: {
-    host: "sql12.freemysqlhosting.net",
-    user: "sql12344054",
+    host: process.env.sqlHost,
+    user: process.env.sqlUser,
     password: process.env.sqlPassword,
-    database: "sql12344054",
+    database: process.env.sqlDatabase,
   },
 });
 
 const con = mysql.createPool({
-  host: "sql12.freemysqlhosting.net",
-  user: "sql12344054",
+  host: process.env.sqlHost,
+  user: process.env.sqlUser,
   password: process.env.sqlPassword,
-  database: "sql12344054",
+  database: process.env.sqlDatabase,
 });
 
 const update = () => {
